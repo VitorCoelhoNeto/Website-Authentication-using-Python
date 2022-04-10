@@ -7,6 +7,11 @@ db = SQLAlchemy()
 DB_NAME = "quizz_app_database.db"
 
 def create_app():
+    """
+    Creates the web application itself on which the views will be rendered.
+    :return: app
+    :rtype: Flask(__name__)
+    """
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'teste123'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
@@ -35,6 +40,10 @@ def create_app():
 
 
 def create_database(app):
+    """
+    Renders the login page as well as its methods and routes.
+    :param app Flask(__name__): Web application
+    """
     if not path.exists('website/' + DB_NAME):
         db.create_all(app=app)
         print('Created Database!')

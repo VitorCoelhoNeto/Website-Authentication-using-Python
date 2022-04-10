@@ -1,3 +1,7 @@
+/**
+ * Deletes a note from a user's note list
+ * @param  {[int]} noteId Note ID fetched from the database (check home.html)
+ */
 function deleteNote(noteId)
 {
     fetch('/delete-note', {

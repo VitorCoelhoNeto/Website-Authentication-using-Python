@@ -9,6 +9,11 @@ views = Blueprint('views', __name__)
 @views.route('/', methods=['GET', 'POST']) # We need to specify which methods are allowed on this page
 @login_required
 def home():
+    """
+    Renders the home page as well as its methods and routes.
+    :return: render_template("home.html", user=current_user)
+    :rtype: function
+    """
     if request.method == 'POST':
         note = request.form.get('note')
 
@@ -26,6 +31,11 @@ def home():
 
 @views.route('/delete-note', methods=['POST'])
 def delete_note():
+    """
+    Function used to delete a note, parsing the JSON retrived from the get request.
+    :return jsonify({}): Returns an empty JSON
+    :rtype: function
+    """
     note = json.loads(request.data)
     noteId = note['noteId']
     note = Note.query.get(noteId)

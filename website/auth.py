@@ -8,6 +8,11 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
+    """
+    Renders the login page as well as its methods and routes.
+    :return: render_template("login.html", user=current_user)
+    :rtype: function
+    """
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
@@ -30,6 +35,11 @@ def login():
 @auth.route('/logout')
 @login_required
 def logout():
+    """
+    Logs the user out and redirects them to the login page.
+    :return: redirect(url_for('auth.login'))
+    :rtype: function
+    """
     logout_user()
     return redirect(url_for('auth.login'))
 
@@ -37,6 +47,11 @@ def logout():
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
+    """
+    Renders the sign up page as well as its methods and routes.
+    :return: render_template("sign_up.html", user=current_user)
+    :rtype: function
+    """
     if request.method == 'POST':
         email = request.form.get('email')
         first_name = request.form.get('firstName')
